@@ -3,8 +3,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 const containerStyle = {
-  width: "2200px",
-  height: "1300px",
+  width: "70%",
+  height: "100%",
 };
 
 const center = {
@@ -19,6 +19,7 @@ function Location() {
       .get("https://gpsvehicleuiet.loca.lt/getLocations?number=9019000074")
       .then((response) => {
         setlocation(response.data);
+        console.log(parseFloat(location[0][1]));
       });
   };
   useEffect(() => {
@@ -49,9 +50,9 @@ function Location() {
 
   return isLoaded ? (
     <GoogleMap
+      zoom={15}
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={6}
       options={{
         streetViewControl: false,
       }}
