@@ -14,7 +14,7 @@ function Live() {
   const [location, setlocation] = useState([]);
   const fetchLocation = () => {
     axios
-      .get("https://gpsvehicleuiet.loca.lt/getLastLocation?number=9019000074")
+      .get("https://gpsvehicleuiet.loca.lt/getLastLocation?number=9019000074", {headers: {'Access-Control-Allow-Origin': '*', 'Bypass-Tunnel-Reminder': '1'}})
       .then((response) => {
         setlocation(response.data);
       });
