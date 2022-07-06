@@ -12,6 +12,7 @@ const center = {
 };
 function Live() {
   const [location, setlocation] = useState([]);
+  const [address, setaddress] = useState([]);
   const fetchLocation = () => {
     axios
       .get("https://gpsvehicleuiet.loca.lt/getLastLocation?number=9019000074", {headers: {'Access-Control-Allow-Origin': '*', 'Bypass-Tunnel-Reminder': '1'}})
@@ -19,6 +20,16 @@ function Live() {
         setlocation(response.data);
       });
   };
+  const fetchPos = () => {
+    axios
+      .get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location[0]},${location[1]}&key=AIzaSyD7Gar6BiSOYWbD2y6YmpaBU_Pk1S4lwSM`)
+      .then((response) => {
+        setaddress(response.data.results)
+      });
+  };
+  const sendpos = () => {
+    alert(`The car is at ${address[0].formatted_address}`);
+  }
   useEffect(() => {
     let interval = setInterval(() => {
       fetchLocation();
@@ -64,13 +75,7 @@ function Live() {
         icon={
           "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png"
         }
-        onRightClick={() =>
-          alert(
-            `Car is located at a latitute of ${parseFloat(
-              location[0]
-            )} and longitude of ${parseFloat(location[1])}`
-          )
-        }
+        onRightClick={() =>{fetchPos();sendpos()}}
       />
     </GoogleMap>
   ) : (
