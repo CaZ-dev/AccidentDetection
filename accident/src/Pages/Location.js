@@ -33,7 +33,7 @@ function Location() {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey:"AIzaSyD7Gar6BiSOYWbD2y6YmpaBU_Pk1S4lwSM",
   });
 
   const [map, setMap] = useState(null);
