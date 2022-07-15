@@ -68,7 +68,7 @@ function Location() {
             icon={
               "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png"
             }
-            onRightClick={() =>
+            onMouseUp={() =>
               alert(
                 `Car is located at a latitute of ${parseFloat(
                   value[0]

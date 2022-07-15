@@ -75,7 +75,7 @@ function Live() {
         icon={
           "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png"
         }
-        onRightClick={() =>{fetchPos();sendpos()}}
+        onMouseUp={() =>{fetchPos();sendpos()}}
       />
     </GoogleMap>
   ) : (
