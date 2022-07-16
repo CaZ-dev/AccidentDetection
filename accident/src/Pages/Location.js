@@ -16,7 +16,7 @@ function Location() {
   const [location, setlocation] = useState([]);
   const fetchLocation = () => {
     axios
-      .get("https://gpsvehicleuiet.loca.lt/getLocations?number=9019000074", {headers: {'Access-Control-Allow-Origin': '*', 'Bypass-Tunnel-Reminder': '1'}})
+      .get("https://gpsvehicleuiet.herokuapp.com/getLocations?number=9019000074", {headers: {'Access-Control-Allow-Origin': '*'}})
       .then((response) => {
         setlocation(response.data);
       });
@@ -68,7 +68,7 @@ function Location() {
             icon={
               "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png"
             }
-            onRightClick={() =>
+            onMouseUp={() =>
               alert(
                 `Car is located at a latitute of ${parseFloat(
                   value[0]

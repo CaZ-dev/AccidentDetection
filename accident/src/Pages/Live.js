@@ -15,7 +15,7 @@ function Live() {
   const [address, setaddress] = useState([]);
   const fetchLocation = () => {
     axios
-      .get("https://gpsvehicleuiet.loca.lt/getLastLocation?number=9019000074", {headers: {'Access-Control-Allow-Origin': '*', 'Bypass-Tunnel-Reminder': '1'}})
+      .get("https://gpsvehicleuiet.herokuapp.com/getLastLocation?number=9019000074", {headers: {'Access-Control-Allow-Origin': '*'}})
       .then((response) => {
         setlocation(response.data);
       });
@@ -75,7 +75,7 @@ function Live() {
         icon={
           "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png"
         }
-        onRightClick={() =>{fetchPos();sendpos()}}
+        onMouseUp={() =>{fetchPos();sendpos()}}
       />
     </GoogleMap>
   ) : (
